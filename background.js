@@ -22,7 +22,7 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
     chrome.notifications.create(
       {
         type: "basic",
-        iconUrl: "icon-16.png",
+        iconUrl: "icons/icon-16.png",
         title: selectedWord.charAt(0).toUpperCase() + selectedWord.substring(1),
         message: def,
       },
