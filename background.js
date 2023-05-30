@@ -14,12 +14,12 @@ chrome.runtime.onInstalled.addListener(function () {
   chrome.contextMenus.create({
     title: 'Define "%s"',
     contexts: ["selection"],
-    id: "myContextMenuId",
+    id: "defineContextMenu",
   });
 });
 
 chrome.contextMenus.onClicked.addListener(async function (info, tab) {
-  if (info.menuItemId === "myContextMenuId") {
+  if (info.menuItemId === "defineContextMenu") {
     selectedWord = info.selectionText;
     def = await logJSONData(selectedWord);
     chrome.notifications.create(
