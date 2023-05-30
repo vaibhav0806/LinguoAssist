@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Your Extension Name",
+  "name": "LinguoAssist",
   "version": "1.0",
   "description": "Description of your extension",
   "action": {
