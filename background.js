@@ -25,6 +25,7 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         iconUrl: "icons/icon-32.png",
         title: selectedWord.charAt(0).toUpperCase() + selectedWord.substring(1),
         message: def,
+        requireInteraction: true,
       },
       (notificationId) => {
         console.log("Notification created with ID:", notificationId);
