@@ -1,5 +1,6 @@
 let selectedWord = "";
 let def = "";
+let searchWord = "";
 
 async function logJSONData(str) {
   const response = await fetch(
@@ -26,6 +27,7 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.contextMenus.onClicked.addListener(async function (info, tab) {
   if (info.menuItemId === "defineContextMenu") {
     selectedWord = info.selectionText;
+    searchWord = selectedWord;
     def = await logJSONData(selectedWord);
     if (!def) {
       selectedWord = "No Definitions Found";
@@ -62,7 +64,7 @@ chrome.notifications.onButtonClicked.addListener(
   (notificationId, buttonIndex) => {
     if (buttonIndex === 0) {
       chrome.tabs.create({
-        url: `https://www.google.com/search?q=define+${selectedWord}`,
+        url: `https://www.google.com/search?q=define+${searchWord}`,
       });
     } else if (buttonIndex === 1) {
       chrome.notifications.clear(notificationId, () =>
