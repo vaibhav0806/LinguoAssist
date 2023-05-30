@@ -1,3 +1,6 @@
+let selectedWord = "";
+let def = "";
+
 async function logJSONData(str) {
   const response = await fetch(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${str}`
@@ -17,8 +20,8 @@ chrome.runtime.onInstalled.addListener(function () {
 
 chrome.contextMenus.onClicked.addListener(async function (info, tab) {
   if (info.menuItemId === "myContextMenuId") {
-    const selectedWord = info.selectionText;
-    const def = await logJSONData(selectedWord);
+    selectedWord = info.selectionText;
+    def = await logJSONData(selectedWord);
     chrome.notifications.create(
       {
         type: "basic",
@@ -26,6 +29,14 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         title: selectedWord.charAt(0).toUpperCase() + selectedWord.substring(1),
         message: def,
         requireInteraction: true,
+        buttons: [
+          {
+            title: "Search on Google",
+          },
+          {
+            title: "Close",
+          },
+        ],
       },
       (notificationId) => {
         console.log("Notification created with ID:", notificationId);
@@ -33,3 +44,13 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
     );
   }
 });
+
+chrome.notifications.onButtonClicked.addListener(
+  (notificationId, buttonIndex) => {
+    if (buttonIndex === 0) {
+      chrome.tabs.create({
+        url: `https://www.google.com/search?q=define+${selectedWord}`,
+      });
+    }
+  }
+);
