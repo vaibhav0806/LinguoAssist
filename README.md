@@ -1,5 +1,3 @@
-![Icon from FlatIcons](icons/icon-128.png)
-
 # LinguoAssist
 
 An all-in-one dictionary extension for Chrome that provides instant word definitions across web-pages.
