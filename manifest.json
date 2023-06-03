@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "LinguoAssist",
   "version": "1.0",
-  "description": "Description of your extension",
+  "description": "An all-in-one dictionary extension for Chrome that provides instant word definitions across web-pages",
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -21,7 +21,6 @@
   },
   "permissions": [
     "contextMenus",
-    "storage",
     "scripting",
     "activeTab",
     "notifications",
