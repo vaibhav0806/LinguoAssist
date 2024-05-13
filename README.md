@@ -26,3 +26,5 @@ An all-in-one dictionary extension for Chrome that provides instant word definit
 <li>DICTIONARY API USED: <a href="https://dictionaryapi.dev/">Free Dictionary API</a></li>
 <li>ICONS SOURCE: <a href="https://www.flaticon.com/">Flaticon</a></li>
 </ul>
+
+Feel free to contribute!
